@@ -1,15 +1,16 @@
 const express = require('express');
-
+const morgan = require('morgan')
 // express app
 const app = express();
 
 // listen for requests
-app.listen(3000);
-
+app.listen(3600);
+app.use(morgan('dev'))
 // register view engine
 app.set('view engine', 'ejs');
 // app.set('views', 'myviews');
 
+app.use(express.static('public'))
 app.get('/', (req, res) => {
   const blogs = [
     {title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
